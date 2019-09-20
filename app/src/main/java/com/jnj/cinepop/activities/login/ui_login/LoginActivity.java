@@ -1,4 +1,4 @@
-package com.jnj.cinepop.ui.login;
+package com.jnj.cinepop.activities.login.ui_login;
 
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
@@ -19,8 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jnj.cinepop.R;
-import com.jnj.cinepop.ui.login.LoginViewModel;
-import com.jnj.cinepop.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 

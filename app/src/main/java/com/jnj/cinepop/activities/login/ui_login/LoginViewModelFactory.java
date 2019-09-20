@@ -1,11 +1,11 @@
-package com.jnj.cinepop.ui.login;
+package com.jnj.cinepop.activities.login.ui_login;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.jnj.cinepop.data.LoginDataSource;
-import com.jnj.cinepop.data.LoginRepository;
+import com.jnj.cinepop.activities.login.data.LoginDataSource;
+import com.jnj.cinepop.activities.login.data.LoginRepository;
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

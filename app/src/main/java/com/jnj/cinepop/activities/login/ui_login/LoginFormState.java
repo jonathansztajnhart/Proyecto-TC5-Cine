@@ -1,4 +1,4 @@
-package com.jnj.cinepop.ui.login;
+package com.jnj.cinepop.activities.login.ui_login;
 
 import android.support.annotation.Nullable;
 

@@ -1,4 +1,4 @@
-package com.jnj.cinepop.data.model;
+package com.jnj.cinepop.activities.login.data.model;
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

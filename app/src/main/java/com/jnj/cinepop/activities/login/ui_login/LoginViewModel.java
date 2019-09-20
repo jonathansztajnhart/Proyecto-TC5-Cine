@@ -1,13 +1,13 @@
-package com.jnj.cinepop.ui.login;
+package com.jnj.cinepop.activities.login.ui_login;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Patterns;
 
-import com.jnj.cinepop.data.LoginRepository;
-import com.jnj.cinepop.data.Result;
-import com.jnj.cinepop.data.model.LoggedInUser;
+import com.jnj.cinepop.activities.login.data.LoginRepository;
+import com.jnj.cinepop.activities.login.data.Result;
+import com.jnj.cinepop.activities.login.data.model.LoggedInUser;
 import com.jnj.cinepop.R;
 
 public class LoginViewModel extends ViewModel {

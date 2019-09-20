@@ -1,6 +1,6 @@
-package com.jnj.cinepop.data;
+package com.jnj.cinepop.activities.login.data;
 
-import com.jnj.cinepop.data.model.LoggedInUser;
+import com.jnj.cinepop.activities.login.data.model.LoggedInUser;
 
 import java.io.IOException;
 

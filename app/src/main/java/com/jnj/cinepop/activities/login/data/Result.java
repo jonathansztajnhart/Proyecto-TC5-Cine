@@ -1,4 +1,4 @@
-package com.jnj.cinepop.data;
+package com.jnj.cinepop.activities.login.data;
 
 /**
  * A generic class that holds a result success w/ data or an error exception.
