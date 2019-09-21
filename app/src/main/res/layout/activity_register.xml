@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/firstname_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="34dp"
+            android:autofillHints="@string/prompt_email"
+            android:hint="@string/prompt_firstname"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="true" />
+
+        <EditText
+            android:id="@+id/lastname_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="34dp"
+            android:autofillHints="@string/prompt_lastname"
+            android:hint="@string/prompt_lastname"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="true" />
+
+        <EditText
+            android:id="@+id/username_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="34dp"
+            android:autofillHints="@string/prompt_email"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:selectAllOnFocus="true" />
+
+        <EditText
+            android:id="@+id/password_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="34dp"
+            android:autofillHints="@string/prompt_password"
+            android:hint="@string/prompt_password"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true" />
+
+        <EditText
+            android:id="@+id/password_confirm_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="34dp"
+            android:autofillHints="@string/prompt_password_confirm"
+            android:hint="@string/prompt_password_confirm"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="34dp"
+            android:enabled="true"
+            android:text="@string/button_register" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

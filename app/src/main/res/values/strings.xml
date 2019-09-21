@@ -15,13 +15,20 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="prompt_password_confirm">Confirmar contraseña</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_register">Registrarse</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <string name="title_activity_register">Registrarse</string>
+    <string name="prompt_firstname">Nombre</string>
+    <string name="prompt_lastname">Apellido</string>
+    <string name="button_register">Registrate</string>
 </resources>
