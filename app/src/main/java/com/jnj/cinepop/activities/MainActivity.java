@@ -16,11 +16,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.jnj.cinepop.DBAcess.DatabaseHelper;
 import com.jnj.cinepop.R;
 import com.jnj.cinepop.activities.login.ui_login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        //db = new DatabaseHelper(this);
     }
 
     @Override
