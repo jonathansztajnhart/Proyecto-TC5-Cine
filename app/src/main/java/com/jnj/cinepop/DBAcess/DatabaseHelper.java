@@ -10,14 +10,14 @@ import android.widget.Toast;
 public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static final String DATABASE_NAME = "Cinepop.db";
-    private static final String DATABASE_TABLE = "Usuarios_table";
+    private static final String DATABASE_TABLE_USERS = "Usuarios_table";
     private static final String COL_ID = "ID";
     private static final String COL_NOMBRE = "NOMBRE";
     private static final String COL_APELLIDO = "APELLIDO";
     private static final String COL_EMAIL = "EMAIL";
     private static final String COL_PASSWORD = "CONTRASEÑA";
 
-    private static final String scriptTableUsuarios = "create table if not exists " + DATABASE_TABLE + "(\n" +
+    private static final String scriptTableUsuarios = "create table if not exists " + DATABASE_TABLE_USERS + "(\n" +
             COL_ID + " integer PRIMARY KEY autoincrement,\n" +
             COL_NOMBRE + " text,\n" +
             COL_APELLIDO + " text,\n" +
@@ -35,11 +35,35 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_USERS);
         db.execSQL(scriptTableUsuarios);
     }
 
-    public boolean insertUsuario(String nombre, String apellido, String email, String password) {
+    public static String getDatabaseTableUsers() {
+        return DATABASE_TABLE_USERS;
+    }
+
+    public static String getColId() {
+        return COL_ID;
+    }
+
+    public static String getColNombre() {
+        return COL_NOMBRE;
+    }
+
+    public static String getColApellido() {
+        return COL_APELLIDO;
+    }
+
+    public static String getColEmail() {
+        return COL_EMAIL;
+    }
+
+    public static String getColPassword() {
+        return COL_PASSWORD;
+    }
+
+    /* boolean insertUsuario(String nombre, String apellido, String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_NOMBRE, nombre);
@@ -48,5 +72,5 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         contentValues.put(COL_PASSWORD, password);
         long result = db.insert(DATABASE_TABLE, null, contentValues);
         return (result != -1);
-    }
+    }*/
 }

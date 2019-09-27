@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.jnj.cinepop.DBAcess.DatabaseHelper;
 import com.jnj.cinepop.R;
-import com.jnj.cinepop.activities.login.ui_login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
