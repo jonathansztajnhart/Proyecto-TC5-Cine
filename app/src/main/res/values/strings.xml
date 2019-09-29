@@ -31,4 +31,15 @@
     <string name="prompt_firstname">Nombre</string>
     <string name="prompt_lastname">Apellido</string>
     <string name="button_register">Registrate</string>
+
+    <string name="invalid_user_pass_login">El usuario y/o la contraseña no válidos</string>
+
+    <string name="successful_register">Registro exitoso</string>
+    <string name="failed_register">Error al registrarse</string>
+    <string name="existing_user_register">El mail ya se encuentra registrado</string>
+    <string name="does_not_pass_match_register">Las contraseñas ingresadas no coinciden</string>
+    <string name="incomplete_form_register">Faltan completar algunos datos</string>
+
+
+    <string name="shared_pref_session">session_login</string>
 </resources>

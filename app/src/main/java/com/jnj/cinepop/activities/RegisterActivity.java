@@ -44,12 +44,12 @@ public class RegisterActivity extends AppCompatActivity {
         boolean isInserted = dbUserManager.insertUsuario(this, txtNombre.getText().toString(), txtApellido.getText().toString(),
                 txtEmail.getText().toString(), txtPassword.getText().toString());
         if(isInserted){
-            Toast.makeText(getApplicationContext(),"Registro exitoso", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.successful_register, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         }
         else{
-            Toast.makeText(getApplicationContext(),"Error al registrarse", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.failed_register, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -63,15 +63,15 @@ public class RegisterActivity extends AppCompatActivity {
                    isValid = true;
                }
                else {
-                   Toast.makeText(getApplicationContext(),"El mail ya se encuentra registrado", Toast.LENGTH_LONG).show();
+                   Toast.makeText(getApplicationContext(),R.string.existing_user_register, Toast.LENGTH_LONG).show();
                }
             }
             else {
-                Toast.makeText(getApplicationContext(),"Las contraseñas ingresadas no coinciden", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),R.string.does_not_pass_match_register, Toast.LENGTH_LONG).show();
             }
         }
         else {
-            Toast.makeText(getApplicationContext(),"Faltan completar algunos datos", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.incomplete_form_register, Toast.LENGTH_LONG).show();
         }
         return isValid;
     }

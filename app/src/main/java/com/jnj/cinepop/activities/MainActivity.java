@@ -1,6 +1,8 @@
 package com.jnj.cinepop.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -63,15 +65,37 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         //getMenuInflater().inflate(R.menu.main, menu);
         TextView loginTxt = findViewById(R.id.txtLogin);
-        loginTxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+
+        String nombre = getFromSharedPreferences("nombre");
+        String apellido = getFromSharedPreferences("apellido");
+
+        if(nombre == null || apellido == null
+                || nombre.equals("") || apellido.equals("")){
+            loginTxt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            loginTxt.setText(nombre + " " + apellido);
+        }
 
         return true;
+    }
+
+    private String getFromSharedPreferences(String key){
+        String username = null;
+        try {
+            SharedPreferences sharedPref = getSharedPreferences("session_login", Context.MODE_PRIVATE);
+            String defaultValue = "";
+            username = sharedPref.getString(key, defaultValue);
+        }
+        catch (Exception e) {
+
+        }
+        return username;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
