@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 LoginModel loginModel = getLoginModel();
                 if(loginModel != null){
-                    saveLoginSharedPreferences(loginModel.getNombre(), loginModel.getApellido());
+                    saveLoginSharedPreferences(loginModel.getEmail() ,loginModel.getNombre(), loginModel.getApellido());
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                 }
@@ -79,11 +79,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //guardo los datos del login para mantener la sesión hasta el el logout
-    private void saveLoginSharedPreferences(String nombre, String apellido) {
+    private void saveLoginSharedPreferences(String email, String nombre, String apellido) {
         SharedPreferences sharedPref = getSharedPreferences("session_login", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("nombre", nombre);
         editor.putString("apellido", apellido);
+        editor.putString("email", email);
         editor.apply();
     }
 

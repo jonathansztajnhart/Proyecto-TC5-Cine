@@ -1,5 +1,6 @@
 package com.jnj.cinepop.activities;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DatabaseHelper db;
+    private NavigationView navigationView;
+    private TextView loginTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +35,18 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /*FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        //db = new DatabaseHelper(this);
+
+        String email = getFromSharedPreferences("email");
+        if(isLogged(email)){
+            navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+        }
     }
 
     @Override
@@ -62,27 +61,30 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.main, menu);
-        TextView loginTxt = findViewById(R.id.txtLogin);
+        loginTxt = findViewById(R.id.txtLogin);
 
+        String email = getFromSharedPreferences("email");
         String nombre = getFromSharedPreferences("nombre");
         String apellido = getFromSharedPreferences("apellido");
 
-        if(nombre == null || apellido == null
-                || nombre.equals("") || apellido.equals("")){
-            loginTxt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                }
-            });
-        } else {
+        if(isLogged(email)){
+            navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
             loginTxt.setText(nombre + " " + apellido);
+        } else {
+            setOnClickToLogin();
         }
 
         return true;
+    }
+
+    private void setOnClickToLogin() {
+        loginTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private String getFromSharedPreferences(String key){
@@ -98,6 +100,20 @@ public class MainActivity extends AppCompatActivity
         return username;
     }
 
+    private boolean isLogged(String email){
+        return email != null && !email.equals("");
+    }
+
+    private void logout(){
+        SharedPreferences sharedPref = getSharedPreferences("session_login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.commit();
+        loginTxt.setText(R.string.nav_header_login);
+        navigationView.getMenu().findItem(R.id.nav_logout).setVisible(false);
+        setOnClickToLogin();
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -108,6 +124,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_mapa) {
 
+        } else if (id == R.id.nav_logout) {
+            logout();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
