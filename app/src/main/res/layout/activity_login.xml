@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     tools:context=".activities.LoginActivity">
 
     <LinearLayout
@@ -21,7 +23,8 @@
             android:autofillHints="@string/prompt_email"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true" />
+            android:selectAllOnFocus="true"
+            />
 
         <EditText
             android:id="@+id/password_login"
