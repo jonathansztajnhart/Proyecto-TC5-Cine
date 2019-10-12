@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
         txtNombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -54,7 +55,38 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
         txtApellido.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtConfirmPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus){
@@ -65,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    //funcion para esconder teclado al tocar fuera del campo enfocado
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);

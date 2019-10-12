@@ -1,5 +1,6 @@
 package com.jnj.cinepop.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,6 +63,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        usernameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        passwordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
         loginButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +108,12 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("apellido", apellido);
         editor.putString("email", email);
         editor.apply();
+    }
+
+    //funcion para esconder teclado al tocar fuera del campo enfocado
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private LoginModel getLoginModel() {
