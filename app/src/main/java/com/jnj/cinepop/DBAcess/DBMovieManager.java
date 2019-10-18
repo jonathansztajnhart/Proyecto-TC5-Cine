@@ -11,6 +11,7 @@ import com.jnj.cinepop.models.MovieModel;
 import java.util.ArrayList;
 
 public class DBMovieManager {
+
     public boolean insertMovie(Context context, String titulo, String sinopsis, String edad, String rutaImg,
                                String fInicio, String fFin) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);

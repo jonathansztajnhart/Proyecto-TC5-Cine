@@ -14,6 +14,7 @@ public class MovieModel {
         private String sinopsis;
         private String edad;
         private String rutaImg;
+        private int idDrawable;
 
     public MovieModel(int id, String titulo, String sinopsis, String edad, String rutaImg) {
         this.id = id;
@@ -21,6 +22,14 @@ public class MovieModel {
         this.sinopsis = sinopsis;
         this.edad = edad;
         this.rutaImg = rutaImg;
+    }
+
+    public MovieModel(int id, String titulo, String sinopsis, String edad, int idDrawable) {
+        this.id = id;
+        this.titulo = titulo;
+        this.sinopsis = sinopsis;
+        this.edad = edad;
+        this.idDrawable = idDrawable;
     }
 
     public int getId() {
@@ -41,6 +50,14 @@ public class MovieModel {
 
     public String getRutaImg() {
         return rutaImg;
+    }
+
+    public int getIdDrawable() {
+        return idDrawable;
+    }
+
+    public void setIdDrawable(int idDrawable) {
+        this.idDrawable = idDrawable;
     }
 }
 
