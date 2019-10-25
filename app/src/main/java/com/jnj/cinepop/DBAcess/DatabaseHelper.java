@@ -26,9 +26,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COL_SINOPSIS = "SINOPSIS";
     private static final String COL_EDAD = "EDAD";
     private static final String COL_RUTA_IMG = "RUTA_IMG";
-    private static final String COL_F_INICIO = "F_INICIO";
-    private static final String COL_F_FIN = "F_FIN";
-    private static final String COL_ACTIVA = "ACTIVA";
 
     //Scripts tablas
     private static final String scriptTableUsuarios = "create table if not exists " + DATABASE_TABLE_USERS + "(\n" +
@@ -43,10 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             COL_TITULO + " text,\n" +
             COL_SINOPSIS + " text,\n" +
             COL_EDAD + " text,\n" +
-            COL_RUTA_IMG + " text,\n" +
-            COL_F_INICIO + " text,\n" +
-            COL_F_FIN + " text,\n" +
-            COL_ACTIVA + " text)";
+            COL_RUTA_IMG + " text)";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null,1);
@@ -110,17 +104,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return COL_RUTA_IMG;
     }
 
-    public static String getColFInicio() {
-        return COL_F_INICIO;
-    }
-
-    public static String getColFFin() {
-        return COL_F_FIN;
-    }
-
-    public static String getColActiva() {
-        return COL_ACTIVA;
-    }
 
     /* boolean insertUsuario(String nombre, String apellido, String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();

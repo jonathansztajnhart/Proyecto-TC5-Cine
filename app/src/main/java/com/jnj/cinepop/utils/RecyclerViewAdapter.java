@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jnj.cinepop.R;
+import com.jnj.cinepop.activities.MainActivity;
+import com.jnj.cinepop.activities.MovieActivity;
 import com.jnj.cinepop.models.MovieModel;
 
 import java.util.List;
@@ -40,21 +42,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.movie_title.setText(mData.get(position).getTitulo());
         holder.movie_image.setImageResource(mData.get(position).getIdDrawable());
-/*        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(mContext,Book_Activity.class);
+                Intent intent = new Intent(mContext, MovieActivity.class);
 
-                // passing data to the book activity
-                intent.putExtra("Title",mData.get(position).getTitle());
-                intent.putExtra("Description",mData.get(position).getDescription());
-                intent.putExtra("Thumbnail",mData.get(position).getThumbnail());
-                // start the activity
+                intent.putExtra("Id",mData.get(position).getId());
+                intent.putExtra("Titulo",mData.get(position).getTitulo());
+                intent.putExtra("Sinopsis",mData.get(position).getSinopsis());
+                intent.putExtra("Edad",mData.get(position).getEdad());
+                intent.putExtra("Imagen",mData.get(position).getIdDrawable());
+
                 mContext.startActivity(intent);
 
             }
-        });*/
+        });
     }
 
     @Override

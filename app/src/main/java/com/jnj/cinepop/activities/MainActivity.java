@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jnj.cinepop.DBAcess.DBMovieManager;
 import com.jnj.cinepop.DBAcess.DatabaseHelper;
 import com.jnj.cinepop.R;
 import com.jnj.cinepop.models.MovieModel;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DatabaseHelper db;
+    private DBMovieManager movieManagerDB;
     private NavigationView navigationView;
     private TextView loginTxt;
 
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity
         if(isLogged(email)){
             navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
         }
+
+        db = new DatabaseHelper(getApplicationContext());
+        movieManagerDB = new DBMovieManager();
+
+        movieManagerDB.loadMovies(getApplicationContext());
     }
 
     @Override
@@ -84,13 +91,7 @@ public class MainActivity extends AppCompatActivity
             setOnClickToLogin();
         }
 
-        ArrayList<MovieModel> lstMovies = new ArrayList<>();
-
-        //int id = this.getResources().getIdentifier("avengers_endgame.jpg", "drawable", this.getPackageName());
-        lstMovies.add(new MovieModel(1, "Avengers Endgame", "Sinopsis pelicula", "APT", R.drawable.avengers_endgame));
-        lstMovies.add(new MovieModel(1, "Angry Birds 2", "Sinopsis pelicula", "APT", R.drawable.angry_birds_2));
-        lstMovies.add(new MovieModel(1, "Capitana Marvel", "Sinopsis pelicula", "APT", R.drawable.capitana_marvel));
-        lstMovies.add(new MovieModel(1, "Pokemon: Detective Pikachu", "Sinopsis pelicula", "APT", R.drawable.pokemon_detective_pikachu));
+        ArrayList<MovieModel> lstMovies = movieManagerDB.getAllActiveMovies(getApplicationContext());
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,lstMovies);
