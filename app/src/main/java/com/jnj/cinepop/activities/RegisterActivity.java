@@ -1,9 +1,17 @@
 package com.jnj.cinepop.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,6 +31,20 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dbUserManager = new DBUserManager();
         setContentView(R.layout.activity_register);
+
+        /*probando*/
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle(getString(R.string.title_activity_register));
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        /*hasta aca*/
+
         btnRegister = findViewById(R.id.btnRegister);
         txtNombre = findViewById(R.id.firstname_register);
         txtApellido = findViewById(R.id.lastname_register);
@@ -36,8 +58,67 @@ public class RegisterActivity extends AppCompatActivity {
                 if(isValid) {
                     registrarUsuario();
                 }
+
+
             }
         });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtNombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtApellido.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        txtConfirmPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+    }
+
+    //funcion para esconder teclado al tocar fuera del campo enfocado
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public void registrarUsuario(){
@@ -95,4 +176,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return isValidPass;
     }
+
+
+
 }

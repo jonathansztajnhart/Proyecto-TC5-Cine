@@ -1,13 +1,16 @@
 package com.jnj.cinepop.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +47,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dbUserManager = new DBUserManager();
         setContentView(R.layout.activity_login);
+
+        /*probando*/
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle(getString(R.string.title_activity_login));
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        /*hasta aca*/
+
         usernameEditText = findViewById(R.id.username_login);
         passwordEditText = findViewById(R.id.password_login);
         loginButton = findViewById(R.id.btnLogin);
@@ -58,6 +75,26 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 navigateToRegisterActivity();
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        usernameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        //le aplico al campo el tema de esconder teclado al tocar fuera del campo
+        passwordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus){
+                    hideKeyboard(v);
+                }
             }
         });
 
@@ -86,6 +123,12 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("apellido", apellido);
         editor.putString("email", email);
         editor.apply();
+    }
+
+    //funcion para esconder teclado al tocar fuera del campo enfocado
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     private LoginModel getLoginModel() {

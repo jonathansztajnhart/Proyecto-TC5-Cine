@@ -12,7 +12,7 @@
     <string name="menu_mapa">Mapa</string>
     <string name="menu_logout">Cerrar sesión</string>
 
-    <string name="title_activity_login">Iniciar Sesión</string>
+    <string name="title_activity_login">Iniciar sesión</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña</string>
     <string name="prompt_password_confirm">Confirmar contraseña</string>
