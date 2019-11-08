@@ -52,6 +52,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(scriptTableMovies);
     }
 
+    public void uploadMovieTable(SQLiteDatabase db){
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_MOVIES);
+        db.execSQL(scriptTableMovies);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_USERS);
