@@ -1,11 +1,10 @@
-package com.jnj.cinepop.DBAcess;
+package com.jnj.cinepop.DBAccess;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.jnj.cinepop.models.LoginModel;
 import com.jnj.cinepop.models.MovieModel;
 
 import java.util.ArrayList;

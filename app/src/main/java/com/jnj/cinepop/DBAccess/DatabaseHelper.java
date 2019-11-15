@@ -1,11 +1,7 @@
-package com.jnj.cinepop.DBAcess;
+package com.jnj.cinepop.DBAccess;
 
-import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.*;
-import android.os.Bundle;
-import android.widget.Toast;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
@@ -15,6 +11,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     //Tablas
     private static final String DATABASE_TABLE_USERS = "Usuarios_table";
     private static final String DATABASE_TABLE_MOVIES = "Movies_table";
+    private static final String DATABASE_TABLE_FUNCTIONS = "Funciones_table";
 
     //Campos
     private static final String COL_ID = "ID";
@@ -26,6 +23,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COL_SINOPSIS = "SINOPSIS";
     private static final String COL_EDAD = "EDAD";
     private static final String COL_RUTA_IMG = "RUTA_IMG";
+    private static final String COL_ID_PELICULA = "ID_MOVIE";
+
+    private static final String COL_ID_SUCURSAL= "ID_SUCURSAL";
+    private static final String COL_TIPO_FUNCION = "TIPO_FUNCION";
+    private static final String COL_FECHA = "FECHA";
+    private static final String COL_HORA = "HORA";
+    private static final String COL_IDIOMA = "IDIOMA";
 
     //Scripts tablas
     private static final String scriptTableUsuarios = "create table if not exists " + DATABASE_TABLE_USERS + "(\n" +
@@ -42,6 +46,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             COL_EDAD + " text,\n" +
             COL_RUTA_IMG + " text)";
 
+    private static final String scriptTableFunctions = "create table if not exists " + DATABASE_TABLE_FUNCTIONS + "(\n" +
+            COL_ID + " integer PRIMARY KEY autoincrement,\n" +
+            COL_ID_PELICULA + " text,\n" +
+            COL_FECHA + " text,\n" +
+            COL_HORA + " text,\n" +
+            COL_ID_SUCURSAL + " text,\n" +
+            COL_TIPO_FUNCION + " text,\n" +
+            COL_IDIOMA + " text)";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null,1);
     }
@@ -50,19 +63,24 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(scriptTableUsuarios);
         db.execSQL(scriptTableMovies);
+        db.execSQL(scriptTableFunctions);
     }
 
     public void uploadMovieTable(SQLiteDatabase db){
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_MOVIES);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS);
         db.execSQL(scriptTableMovies);
+        db.execSQL(scriptTableFunctions);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_MOVIES);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS);
         db.execSQL(scriptTableUsuarios);
         db.execSQL(scriptTableMovies);
+        db.execSQL(scriptTableFunctions);
     }
 
     public static String getDatabaseTableUsers() {
@@ -71,6 +89,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public static String getDatabaseTableMovies() {
         return DATABASE_TABLE_MOVIES;
+    }
+
+    public static String getDatabaseTableFunctions() {
+        return DATABASE_TABLE_FUNCTIONS;
     }
 
     public static String getColId() {
@@ -109,15 +131,27 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return COL_RUTA_IMG;
     }
 
+    public static String getColIdPelicula() {
+        return COL_ID_PELICULA;
+    }
 
-    /* boolean insertUsuario(String nombre, String apellido, String email, String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_NOMBRE, nombre);
-        contentValues.put(COL_APELLIDO, apellido);
-        contentValues.put(COL_EMAIL, email);
-        contentValues.put(COL_PASSWORD, password);
-        long result = db.insert(DATABASE_TABLE, null, contentValues);
-        return (result != -1);
-    }*/
+    public static String getColIdSucursal() {
+        return COL_ID_SUCURSAL;
+    }
+
+    public static String getColTipoFuncion() {
+        return COL_TIPO_FUNCION;
+    }
+
+    public static String getColFecha() {
+        return COL_FECHA;
+    }
+
+    public static String getColHora() {
+        return COL_HORA;
+    }
+
+    public static String getColIdioma() {
+        return COL_IDIOMA;
+    }
 }
