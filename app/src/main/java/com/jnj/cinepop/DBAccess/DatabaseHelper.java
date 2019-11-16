@@ -66,7 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(scriptTableFunctions);
     }
 
-    public void uploadMovieTable(SQLiteDatabase db){
+    public void uploadTables(SQLiteDatabase db){
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_MOVIES);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS);
         db.execSQL(scriptTableMovies);

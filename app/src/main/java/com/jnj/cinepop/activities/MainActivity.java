@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.jnj.cinepop.DBAccess.DBFunctionManager;
 import com.jnj.cinepop.DBAccess.DBMovieManager;
 import com.jnj.cinepop.DBAccess.DatabaseHelper;
 import com.jnj.cinepop.R;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
 
     private DatabaseHelper db;
     private DBMovieManager movieManagerDB;
+    private DBFunctionManager functionManagerDB;
     private NavigationView navigationView;
     private TextView loginTxt;
 
@@ -56,10 +58,11 @@ public class MainActivity extends AppCompatActivity
 
         db = new DatabaseHelper(getApplicationContext());
         SQLiteDatabase dbSql = db.getReadableDatabase();
-        db.uploadMovieTable(dbSql);
+        db.uploadTables(dbSql);
         movieManagerDB = new DBMovieManager();
-
         movieManagerDB.loadMovies(getApplicationContext());
+        functionManagerDB = new DBFunctionManager();
+        functionManagerDB.loadFunctions(getApplicationContext());
     }
 
     @Override

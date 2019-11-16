@@ -27,8 +27,11 @@ public class DBFunctionManager {
         return (result != -1);
     }
 
-    public void loadMovies(Context context){
+    public void loadFunctions(Context context){
         insertFuncion(context, 1, "15-12-2019", "12:00hs", 1, 1, "Español");
+        insertFuncion(context, 1, "16-12-2019", "12:00hs", 1, 1, "Español");
+        insertFuncion(context, 1, "17-12-2019", "12:00hs", 1, 1, "Español");
+        insertFuncion(context, 1, "18-12-2019", "12:00hs", 1, 1, "Español");
     }
 
     public FuncionModel getFuncion(Context context, int id) {
@@ -50,6 +53,24 @@ public class DBFunctionManager {
         }
         res.close();
         return funcionModel;
+    }
+
+    public ArrayList<String> getFunctionDates(Context context, int id) {
+        ArrayList<String> functionDates = null;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor res = db.rawQuery( "select " + dbHelper.getColFecha()
+                + " from "+ dbHelper.getDatabaseTableFunctions() + " where "
+                + dbHelper.getColId() + " = '" + id + "'", null );
+        if(res.getCount() > 0){
+            res.moveToFirst();
+            functionDates = new ArrayList<>();
+            for (int i  = 0; i < res.getCount(); i++) {
+                functionDates.add(res.getString(2));
+            }
+        }
+        res.close();
+        return functionDates;
     }
 
     /*public ArrayList<FuncionModel> getAllFuncions(Context context) {
