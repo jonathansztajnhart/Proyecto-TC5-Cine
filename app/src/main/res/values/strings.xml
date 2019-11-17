@@ -36,4 +36,5 @@
 
     <string name="shared_pref_session">session_login</string>
 
+    <string name="button_reservar_function">Reservar</string>
 </resources>

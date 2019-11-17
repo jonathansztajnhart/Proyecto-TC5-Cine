@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-        <LinearLayout
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -68,5 +69,15 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:spinnerMode="dropdown" />
+
+    <Button
+        android:id="@+id/btnReservarFunction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="5dp"
+        android:visibility="gone"
+        android:text="@string/button_reservar_function" />
 
 </LinearLayout>

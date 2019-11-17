@@ -212,6 +212,85 @@ public class DBFunctionManager {
         return functionDates;
     }
 
+    public ArrayList<String> getFunctionHours(Context context, int id, String fecha) {
+        ArrayList<String> functionHours = null;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor res = db.rawQuery( "select distinct " + DatabaseHelper.getColHora()
+                + " from "+ DatabaseHelper.getDatabaseTableFunctions() + " where "
+                + DatabaseHelper.getColIdPelicula() + " = '" + id + "'" + " and " + DatabaseHelper.getColFecha()
+                + " = '" + fecha + "'", null );
+        if(res.getCount() > 0){
+            functionHours = new ArrayList<>();
+            while(res.moveToNext()){
+                functionHours.add(res.getString(0));
+            }
+        }
+        res.close();
+        return functionHours;
+    }
+
+    public ArrayList<String> getFunctionTipos(Context context, int id, String fecha, String hora) {
+        ArrayList<String> functionTipos = null;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor res = db.rawQuery( "select distinct " + DatabaseHelper.getColTipoFuncion()
+                + " from "+ DatabaseHelper.getDatabaseTableFunctions() + " where "
+                + DatabaseHelper.getColIdPelicula() + " = '" + id + "'" + " and " + DatabaseHelper.getColFecha()
+                + " = '" + fecha + "'" + " and " + DatabaseHelper.getColHora()
+                + " = '" + hora + "'", null );
+        if(res.getCount() > 0){
+            functionTipos = new ArrayList<>();
+            while(res.moveToNext()){
+                functionTipos.add(res.getString(0));
+            }
+        }
+        res.close();
+        return functionTipos;
+    }
+
+    public ArrayList<String> getFunctionLanguages(Context context, int id, String fecha, String hora, String tipo) {
+        ArrayList<String> functionLanguages = null;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor res = db.rawQuery( "select distinct " + DatabaseHelper.getColIdioma()
+                + " from "+ DatabaseHelper.getDatabaseTableFunctions() + " where "
+                + DatabaseHelper.getColIdPelicula() + " = '" + id + "'" + " and " + DatabaseHelper.getColFecha()
+                + " = '" + fecha + "'" + " and " + DatabaseHelper.getColHora()
+                + " = '" + hora + "'" + " and " + DatabaseHelper.getColTipoFuncion()
+                + " = '" + tipo + "'", null );
+        if(res.getCount() > 0){
+            functionLanguages = new ArrayList<>();
+            while(res.moveToNext()){
+                functionLanguages.add(res.getString(0));
+            }
+        }
+        res.close();
+        return functionLanguages;
+    }
+
+    public ArrayList<String> getFunctionSucursales(Context context, int id, String fecha, String hora,
+                                                   String tipo, String idioma) {
+        ArrayList<String> functionSucursales = null;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor res = db.rawQuery( "select distinct " + DatabaseHelper.getColIdSucursal()
+                + " from "+ DatabaseHelper.getDatabaseTableFunctions() + " where "
+                + DatabaseHelper.getColIdPelicula() + " = '" + id + "'" + " and " + DatabaseHelper.getColFecha()
+                + " = '" + fecha + "'" + " and " + DatabaseHelper.getColHora()
+                + " = '" + hora + "'" + " and " + DatabaseHelper.getColTipoFuncion()
+                + " = '" + tipo + "'" + " and " + DatabaseHelper.getColIdioma()
+                + " = '" + idioma + "'", null );
+        if(res.getCount() > 0){
+            functionSucursales = new ArrayList<>();
+            while(res.moveToNext()){
+                functionSucursales.add(res.getString(0));
+            }
+        }
+        res.close();
+        return functionSucursales;
+    }
+
     /*public ArrayList<FuncionModel> getAllFuncions(Context context) {
         ArrayList<MovieModel> listActiveMovies = null;
         DatabaseHelper dbHelper = new DatabaseHelper(context);
