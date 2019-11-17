@@ -12,6 +12,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String DATABASE_TABLE_USERS = "Usuarios_table";
     private static final String DATABASE_TABLE_MOVIES = "Movies_table";
     private static final String DATABASE_TABLE_FUNCTIONS = "Funciones_table";
+    private static final String DATABASE_TABLE_SUBSIDIARY = "Sucursales_table";
+    private static final String DATABASE_TABLE_FUNCTIONS_TYPE = "Tipo_Funciones_table";
 
     //Campos
     private static final String COL_ID = "ID";
@@ -30,6 +32,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String COL_FECHA = "FECHA";
     private static final String COL_HORA = "HORA";
     private static final String COL_IDIOMA = "IDIOMA";
+
+    private static final String COL_ID_TIPO = "ID_TIPO";
+    private static final String COL_PRECIO = "PRECIO";
+
+    private static final String COL_NOMBRE_SUC = "NOMBRE_SUC";
+    private static final String COL_DIREC_SUC = "DIREC_SUC";
 
     //Scripts tablas
     private static final String scriptTableUsuarios = "create table if not exists " + DATABASE_TABLE_USERS + "(\n" +
@@ -55,6 +63,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             COL_TIPO_FUNCION + " text,\n" +
             COL_IDIOMA + " text)";
 
+    private static final String scriptTableFunctionsType = "create table if not exists " + DATABASE_TABLE_FUNCTIONS_TYPE + "(\n" +
+            COL_ID_TIPO + " integer PRIMARY KEY autoincrement,\n" +
+            COL_TIPO_FUNCION + " text,\n" +
+            COL_PRECIO + " text)";
+
+    private static final String scriptTableSubsidiary = "create table if not exists " + DATABASE_TABLE_SUBSIDIARY + "(\n" +
+            COL_ID_SUCURSAL + " integer PRIMARY KEY autoincrement,\n" +
+            COL_NOMBRE_SUC + " text,\n" +
+            COL_DIREC_SUC + " text)";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null,1);
     }
@@ -64,13 +82,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(scriptTableUsuarios);
         db.execSQL(scriptTableMovies);
         db.execSQL(scriptTableFunctions);
+        db.execSQL(scriptTableFunctionsType);
+        db.execSQL(scriptTableSubsidiary);
     }
 
     public void uploadTables(SQLiteDatabase db){
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_MOVIES);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS_TYPE);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_SUBSIDIARY);
         db.execSQL(scriptTableMovies);
         db.execSQL(scriptTableFunctions);
+        db.execSQL(scriptTableFunctionsType);
+        db.execSQL(scriptTableSubsidiary);
     }
 
     @Override
@@ -78,9 +102,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_MOVIES);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS_TYPE);
         db.execSQL(scriptTableUsuarios);
         db.execSQL(scriptTableMovies);
         db.execSQL(scriptTableFunctions);
+        db.execSQL(scriptTableFunctionsType);
+        db.execSQL(scriptTableSubsidiary);
     }
 
     public static String getDatabaseTableUsers() {
@@ -93,6 +120,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public static String getDatabaseTableFunctions() {
         return DATABASE_TABLE_FUNCTIONS;
+    }
+
+    public static String getDatabaseTableFunctionsType() {
+        return DATABASE_TABLE_FUNCTIONS_TYPE;
+    }
+
+    public static String getDatabaseTableSubsidiary() {
+        return DATABASE_TABLE_SUBSIDIARY;
     }
 
     public static String getColId() {
@@ -153,5 +188,21 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public static String getColIdioma() {
         return COL_IDIOMA;
+    }
+
+    public static String getColIdTipo() {
+        return COL_ID_TIPO;
+    }
+
+    public static String getColPrecio() {
+        return COL_PRECIO;
+    }
+
+    public static String getColNombreSuc() {
+        return COL_NOMBRE_SUC;
+    }
+
+    public static String getColDirecSuc() {
+        return COL_DIREC_SUC;
     }
 }
