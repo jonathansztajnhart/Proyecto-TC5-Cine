@@ -26,8 +26,8 @@ public class MovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
 
-        txtTitulo = (TextView) findViewById(R.id.txttitle);
-        ivImage = (ImageView) findViewById(R.id.movieImg);
+        txtTitulo = findViewById(R.id.txttitle);
+        ivImage = findViewById(R.id.movieImg);
 
         Intent intent = getIntent();
         id = intent.getExtras().getInt("Id");
@@ -41,10 +41,10 @@ public class MovieActivity extends AppCompatActivity {
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         setupViewPager(mViewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
     }

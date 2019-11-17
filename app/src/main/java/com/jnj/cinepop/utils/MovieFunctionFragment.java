@@ -36,18 +36,6 @@ public class MovieFunctionFragment extends Fragment {
 
         ArrayList<String> options = functionManagerDB.getFunctionDates(this.getContext(), id);
         options.add(0, "Seleccione Fecha");
-       /* options.add("12/11/2019");
-        options.add("13/11/2019");
-        options.add("14/11/2019");
-        options.add("12/11/2019");
-        options.add("13/11/2019");
-        options.add("14/11/2019");
-        options.add("12/11/2019");
-        options.add("13/11/2019");
-        options.add("14/11/2019");
-        options.add("12/11/2019");
-        options.add("13/11/2019");
-        options.add("14/11/2019");*/
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),
                 android.R.layout.simple_spinner_dropdown_item,

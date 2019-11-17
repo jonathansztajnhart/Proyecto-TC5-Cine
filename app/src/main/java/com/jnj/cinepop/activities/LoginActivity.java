@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         /*probando*/
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle(getString(R.string.title_activity_login));
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
 
@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkFieldsForEmptyValues(){
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        Button btnLogin = findViewById(R.id.btnLogin);
 
         String user = usernameEditText.getText().toString();
         String pass = passwordEditText.getText().toString();

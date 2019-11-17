@@ -35,8 +35,8 @@ public class MovieDetailFragment extends Fragment {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
 
-        txtEdad = (TextView) getActivity().findViewById(R.id.txtEdad);
-        txtSinopsis = (TextView) getActivity().findViewById(R.id.txtSinopsis);
+        txtEdad = getActivity().findViewById(R.id.txtEdad);
+        txtSinopsis = getActivity().findViewById(R.id.txtSinopsis);
         txtEdad.setText(this.edad);
         txtSinopsis.setText(this.sinopsis);
     }

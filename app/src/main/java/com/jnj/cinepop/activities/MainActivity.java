@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity
 
         ArrayList<MovieModel> lstMovies = movieManagerDB.getAllActiveMovies(getApplicationContext());
 
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+        RecyclerView myrv = findViewById(R.id.recyclerview_id);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,lstMovies);
         myrv.setLayoutManager(new GridLayoutManager(this,3));
         myrv.setAdapter(myAdapter);

@@ -15,11 +15,11 @@ public class DBMovieManager {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(dbHelper.getColTitulo(), titulo);
-        contentValues.put(dbHelper.getColSinopsis(), sinopsis);
-        contentValues.put(dbHelper.getColEdad(), edad);
-        contentValues.put(dbHelper.getColRutaImg(), rutaImg);
-        long result = db.insert(dbHelper.getDatabaseTableMovies(), null, contentValues);
+        contentValues.put(DatabaseHelper.getColTitulo(), titulo);
+        contentValues.put(DatabaseHelper.getColSinopsis(), sinopsis);
+        contentValues.put(DatabaseHelper.getColEdad(), edad);
+        contentValues.put(DatabaseHelper.getColRutaImg(), rutaImg);
+        long result = db.insert(DatabaseHelper.getDatabaseTableMovies(), null, contentValues);
         return (result != -1);
     }
 
@@ -34,11 +34,11 @@ public class DBMovieManager {
         MovieModel movieModel = null;
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor res = db.rawQuery( "select " + dbHelper.getColId() + ", " + dbHelper.getColTitulo()
-                + ", " + dbHelper.getColSinopsis()
-                + ", " + dbHelper.getColEdad() + ", " + dbHelper.getColRutaImg()
-                + " from "+ dbHelper.getDatabaseTableMovies() + " where "
-                + dbHelper.getColId() + " = '" + id + "'", null );
+        Cursor res = db.rawQuery( "select " + DatabaseHelper.getColId() + ", " + DatabaseHelper.getColTitulo()
+                + ", " + DatabaseHelper.getColSinopsis()
+                + ", " + DatabaseHelper.getColEdad() + ", " + DatabaseHelper.getColRutaImg()
+                + " from "+ DatabaseHelper.getDatabaseTableMovies() + " where "
+                + DatabaseHelper.getColId() + " = '" + id + "'", null );
         if(res.getCount() > 0){
             res.moveToFirst();
             movieModel = new MovieModel(Integer.parseInt(res.getString(0)),res.getString(1),res.getString(2),res.getString(3),
@@ -52,10 +52,10 @@ public class DBMovieManager {
         ArrayList<MovieModel> listActiveMovies = null;
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor res = db.rawQuery( "select " + dbHelper.getColId() + ", " + dbHelper.getColTitulo()
-                + ", " + dbHelper.getColSinopsis()
-                + ", " + dbHelper.getColEdad() + ", " + dbHelper.getColRutaImg()
-                + " from "+ dbHelper.getDatabaseTableMovies(), null ); //agregar where validando fecha vigencia
+        Cursor res = db.rawQuery( "select " + DatabaseHelper.getColId() + ", " + DatabaseHelper.getColTitulo()
+                + ", " + DatabaseHelper.getColSinopsis()
+                + ", " + DatabaseHelper.getColEdad() + ", " + DatabaseHelper.getColRutaImg()
+                + " from "+ DatabaseHelper.getDatabaseTableMovies(), null ); //agregar where validando fecha vigencia
         if(res.getCount() > 0){
             listActiveMovies = new ArrayList<>();
             while(res.moveToNext()){

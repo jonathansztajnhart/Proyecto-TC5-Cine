@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         /*probando*/
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle(getString(R.string.title_activity_register));
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
 
