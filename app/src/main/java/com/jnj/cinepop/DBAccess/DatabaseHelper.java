@@ -60,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             COL_FECHA + " text,\n" +
             COL_HORA + " text,\n" +
             COL_ID_SUCURSAL + " text,\n" +
-            COL_TIPO_FUNCION + " text,\n" +
+            COL_ID_TIPO + " text,\n" +
             COL_IDIOMA + " text)";
 
     private static final String scriptTableFunctionsType = "create table if not exists " + DATABASE_TABLE_FUNCTIONS_TYPE + "(\n" +

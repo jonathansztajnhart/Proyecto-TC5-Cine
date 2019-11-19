@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity
         movieManagerDB.loadMovies(getApplicationContext());
         functionManagerDB = new DBFunctionManager();
         functionManagerDB.loadFunctions(getApplicationContext());
+        functionManagerDB.loadFunctionsType(getApplicationContext());
+        functionManagerDB.loadSucursales(getApplicationContext());
     }
 
     @Override
