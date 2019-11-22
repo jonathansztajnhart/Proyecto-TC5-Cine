@@ -67,4 +67,19 @@ public class DBMovieManager {
         res.close();
         return listActiveMovies;
     }
+
+    public String getNameMovie(Context context, int id) {
+        String nameMovie = null;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor res = db.rawQuery( "select " + DatabaseHelper.getColTitulo()
+                + " from "+ DatabaseHelper.getDatabaseTableMovies() + " where "
+                + DatabaseHelper.getColId() + " = '" + id + "'", null );
+        if(res.getCount() > 0){
+            res.moveToFirst();
+                nameMovie = res.getString(0);
+        }
+        res.close();
+        return nameMovie;
+    }
 }

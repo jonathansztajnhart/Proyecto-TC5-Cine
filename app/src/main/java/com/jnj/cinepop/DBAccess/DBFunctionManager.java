@@ -367,6 +367,60 @@ public class DBFunctionManager {
         return functionSucursales;
     }
 
+    public int getIdTipoFuncion(Context context, String tipoFuncion){
+        int idTipoFuncion = 0;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sqlQuery = "select distinct " + DatabaseHelper.getColIdTipo()
+                + " from " + DatabaseHelper.getDatabaseTableFunctionsType()
+                + " where " + DatabaseHelper.getColTipoFuncion() + " = '" + tipoFuncion + "'";
+        Cursor res = db.rawQuery( sqlQuery, null );
+        if(res.getCount() > 0){
+            res.moveToFirst();
+            idTipoFuncion = Integer.parseInt(res.getString(0));
+        }
+        res.close();
+        return idTipoFuncion;
+    }
+
+
+    public int getIdSucursal(Context context, String sucursal){
+        int idSucursal = 0;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sqlQuery = "select distinct " + DatabaseHelper.getColIdSucursal()
+                + " from " + DatabaseHelper.getDatabaseTableSubsidiary()
+                + " where " + DatabaseHelper.getColNombreSuc() + " = '" + sucursal + "'";
+        Cursor res = db.rawQuery( sqlQuery, null );
+        if(res.getCount() > 0){
+            res.moveToFirst();
+            idSucursal = Integer.parseInt(res.getString(0));
+        }
+        res.close();
+        return idSucursal;
+    }
+
+    public int getIdFuncion(Context context, int id, String fecha, String hora, int idTipoFuncion, String idioma, int idSucursal) {
+        int idFuncion = 0;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String sqlQuery = "select distinct " + DatabaseHelper.getColId()
+                + " from " + DatabaseHelper.getDatabaseTableFunctions()
+                + " where " + DatabaseHelper.getColIdPelicula() + " = '" + id + "'"
+                + " and " + DatabaseHelper.getColFecha() + " = '" + fecha + "'"
+                + " and " + DatabaseHelper.getColHora() + " = '" + hora + "'"
+                + " and " + DatabaseHelper.getColIdTipo() + " = '" + idTipoFuncion + "'"
+                + " and " + DatabaseHelper.getColIdioma() + " = '" + idioma + "'"
+                + " and " + DatabaseHelper.getColIdSucursal() + " = '" + idSucursal + "'";
+        Cursor res = db.rawQuery( sqlQuery, null );
+        if(res.getCount() > 0){
+            res.moveToFirst();
+            idFuncion = Integer.parseInt(res.getString(0));
+        }
+        res.close();
+        return idFuncion;
+    }
+
     /*public ArrayList<String> getFunctionSucursales(Context context, int id, String fecha, String hora,
                                                    String tipo, String idioma) {
         ArrayList<String> functionSucursales = null;

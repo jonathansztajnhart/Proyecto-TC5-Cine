@@ -1,5 +1,6 @@
 package com.jnj.cinepop.utils;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,19 +14,23 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.jnj.cinepop.DBAccess.DBFunctionManager;
+import com.jnj.cinepop.DBAccess.DBMovieManager;
 import com.jnj.cinepop.DBAccess.DatabaseHelper;
 import com.jnj.cinepop.R;
+import com.jnj.cinepop.activities.ReservaActivity;
 
 import java.util.ArrayList;
 
 public class MovieFunctionFragment extends Fragment {
     private static final String TAG = "MovieFunctionFragment";
     private DBFunctionManager functionManagerDB;
+    private DBMovieManager movieManagerDB;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         functionManagerDB = new DBFunctionManager();
+        movieManagerDB = new DBMovieManager();
         final int id = getArguments().getInt("id");
         View view = inflater.inflate(R.layout.activity_movie_function,container,false);
 
@@ -33,7 +38,7 @@ public class MovieFunctionFragment extends Fragment {
         final Spinner dropdownHora = view.findViewById(R.id.dropdownHora);
         final Spinner dropdownTipo = view.findViewById(R.id.dropdownTipo);
         final Spinner dropdownIdioma = view.findViewById(R.id.dropdownIdioma);
-        Spinner dropdownSucursal = view.findViewById(R.id.dropdownSucursal);
+        final Spinner dropdownSucursal = view.findViewById(R.id.dropdownSucursal);
         final Button btnReservaFuncion = view.findViewById(R.id.btnReservarFunction);
 
         ArrayList<String> fechas = functionManagerDB.getFunctionDates(this.getContext(), id);
@@ -189,6 +194,34 @@ public class MovieFunctionFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        btnReservaFuncion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    String pelicula = movieManagerDB.getNameMovie(getContext(), id);
+                    String fecha = dropdownFecha.getSelectedItem().toString();
+                    String hora = dropdownHora.getSelectedItem().toString();
+                    int idTipoFuncion = functionManagerDB.getIdTipoFuncion(getContext(), dropdownTipo.getSelectedItem().toString());
+                    String tipoFuncion = dropdownTipo.getSelectedItem().toString();
+                    String idioma = dropdownIdioma.getSelectedItem().toString();
+                    int idSucursal = functionManagerDB.getIdSucursal(getContext(), dropdownSucursal.getSelectedItem().toString());
+                    String sucursal = dropdownSucursal.getSelectedItem().toString();
+                    int idFuncion = functionManagerDB.getIdFuncion(getContext(), id, fecha, hora, idTipoFuncion, idioma, idSucursal);
+
+                    Intent intent = new Intent(getContext(), ReservaActivity.class);
+                    intent.putExtra("idPelicula", id);
+                    intent.putExtra("pelicula", pelicula);
+                    intent.putExtra("fecha", fecha);
+                    intent.putExtra("hora", hora);
+                    intent.putExtra("idTipoFuncion", idTipoFuncion);
+                    intent.putExtra("tipoFuncion", tipoFuncion);
+                    intent.putExtra("idioma", idioma);
+                    intent.putExtra("idSucursal", idSucursal);
+                    intent.putExtra("sucursal", sucursal);
+                    intent.putExtra("idFuncion", idFuncion);
+                    startActivity(intent);
             }
         });
 

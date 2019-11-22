@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.jnj.cinepop.DBAccess.DBFunctionManager;
 import com.jnj.cinepop.DBAccess.DBMovieManager;
+import com.jnj.cinepop.DBAccess.DBSeatManager;
 import com.jnj.cinepop.DBAccess.DatabaseHelper;
 import com.jnj.cinepop.R;
 import com.jnj.cinepop.models.MovieModel;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity
     private DatabaseHelper db;
     private DBMovieManager movieManagerDB;
     private DBFunctionManager functionManagerDB;
+    private DBSeatManager seatManagerDB;
     private NavigationView navigationView;
     private TextView loginTxt;
 
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity
         functionManagerDB.loadFunctions(getApplicationContext());
         functionManagerDB.loadFunctionsType(getApplicationContext());
         functionManagerDB.loadSucursales(getApplicationContext());
+        seatManagerDB = new DBSeatManager();
+        seatManagerDB.loadSeats(getApplicationContext());
     }
 
     @Override

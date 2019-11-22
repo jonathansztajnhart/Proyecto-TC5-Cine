@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final String DATABASE_TABLE_FUNCTIONS = "Funciones_table";
     private static final String DATABASE_TABLE_SUBSIDIARY = "Sucursales_table";
     private static final String DATABASE_TABLE_FUNCTIONS_TYPE = "Tipo_Funciones_table";
+    private static final String DATABASE_TABLE_SEATS = "Asientos_table";
 
     //Campos
     private static final String COL_ID = "ID";
@@ -38,6 +39,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static final String COL_NOMBRE_SUC = "NOMBRE_SUC";
     private static final String COL_DIREC_SUC = "DIREC_SUC";
+
+    private static final String COL_CANT_ASIENTOS = "CANTIDAD_ASIENTOS";
+    private static final String COL_ID_FUNCION = "ID_FUNCION";
 
     //Scripts tablas
     private static final String scriptTableUsuarios = "create table if not exists " + DATABASE_TABLE_USERS + "(\n" +
@@ -73,6 +77,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             COL_NOMBRE_SUC + " text,\n" +
             COL_DIREC_SUC + " text)";
 
+    private static final String scriptTableSeats = "create table if not exists " + DATABASE_TABLE_SEATS + "(\n" +
+            COL_ID + " integer PRIMARY KEY autoincrement,\n" +
+            COL_CANT_ASIENTOS + " text,\n" +
+            COL_ID_FUNCION + " text)";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null,1);
     }
@@ -84,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL(scriptTableFunctions);
         db.execSQL(scriptTableFunctionsType);
         db.execSQL(scriptTableSubsidiary);
+        db.execSQL(scriptTableSeats);
     }
 
     public void uploadTables(SQLiteDatabase db){
@@ -103,11 +113,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_MOVIES);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS);
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_FUNCTIONS_TYPE);
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_SEATS);
         db.execSQL(scriptTableUsuarios);
         db.execSQL(scriptTableMovies);
         db.execSQL(scriptTableFunctions);
         db.execSQL(scriptTableFunctionsType);
         db.execSQL(scriptTableSubsidiary);
+        db.execSQL(scriptTableSeats);
     }
 
     public static String getDatabaseTableUsers() {
@@ -129,6 +141,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static String getDatabaseTableSubsidiary() {
         return DATABASE_TABLE_SUBSIDIARY;
     }
+
+    public static String getDatabaseTableSeats() { return DATABASE_TABLE_SEATS; }
 
     public static String getColId() {
         return COL_ID;
@@ -205,4 +219,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static String getColDirecSuc() {
         return COL_DIREC_SUC;
     }
+
+    public static String getColCantAsientos() { return COL_CANT_ASIENTOS; }
+
+    public static String getColIdFuncion() { return COL_ID_FUNCION; }
 }
