@@ -38,5 +38,6 @@
 
     <string name="button_reservar_function">Reservar</string>
 
-    <string name="txtCantAsientosDisponibles">Asientos disponibles:</string>
+    <string name="cant_asientos_disponibles">Asientos disponibles:</string>
+    <string name="button_confirmar_reserva">Confirmar</string>
 </resources>
