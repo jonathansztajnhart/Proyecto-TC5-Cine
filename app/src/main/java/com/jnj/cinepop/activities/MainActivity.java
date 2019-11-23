@@ -153,6 +153,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_mapa) {
 
+        } else if (id == R.id.nav_contacto) {
+
         } else if (id == R.id.nav_logout) {
             logout();
         }
