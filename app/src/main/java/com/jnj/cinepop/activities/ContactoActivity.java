@@ -60,7 +60,7 @@ public class ContactoActivity extends AppCompatActivity {
     private void enviarMail() {
 
         String mensaje = txtComentario.getText().toString();
-        String mailcontacto = "contacto@cinepop.com";
+        String[] mailcontacto = new String[] {"contacto@cinepop.com"};
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, mailcontacto);
