@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".activities.MapitaActivity"></activity>
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.ReservaActivity" />
         <activity android:name=".activities.MovieActivity" />
@@ -31,8 +31,7 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".activities.ContactoActivity"
-            android:label="@string/title_activity_contacto"
-            />
+            android:label="@string/title_activity_contacto" />
     </application>
 
 </manifest>
