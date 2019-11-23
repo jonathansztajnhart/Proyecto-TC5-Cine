@@ -41,4 +41,7 @@
 
     <string name="cant_asientos_disponibles">Asientos disponibles:</string>
     <string name="button_confirmar_reserva">Confirmar</string>
+    <string name="title_activity_contacto">Enviar Comentarios</string>
+    <string name="button_send">Enviar</string>
+    <string name="write_coment">Escriba su comentario aquí</string>
 </resources>
