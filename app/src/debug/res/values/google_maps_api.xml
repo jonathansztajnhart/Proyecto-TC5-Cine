@@ -1,0 +1,8 @@
+<resources>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        <!-- código de la APIKEY
+        https://developers.google.com/maps/documentation/android/start#get-key
+        -->
+        AIzaSyCB4IdnmpKMY_CPZp0wSwmLrXRPwvlmgZw
+    </string>
+</resources>
