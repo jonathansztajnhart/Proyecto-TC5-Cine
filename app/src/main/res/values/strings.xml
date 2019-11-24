@@ -43,4 +43,6 @@
     <string name="title_activity_reserva">Reservar</string>
     <string name="title_activity_movie">Pelicula</string>
     <string name="title_activity_tickets">Mis Tickets</string>
+
+    <string name="cant_asientos">Asientos: </string>
 </resources>

@@ -24,7 +24,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtNombrePelicula"
+                android:id="@+id/guidFirstRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:layout_editor_absoluteX="176dp"
@@ -45,7 +45,7 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/txtHoraFuncion"
+            android:id="@+id/guidForthRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -59,13 +59,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txtTipoFuncion"
+            android:id="@+id/guidThirdRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
         <TextView
-            android:id="@+id/txtIdioma"
+            android:id="@+id/txtIdiomaFuncion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />

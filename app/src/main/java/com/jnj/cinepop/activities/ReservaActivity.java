@@ -51,11 +51,11 @@ public class ReservaActivity extends AppCompatActivity {
 
         seatManagerDB = new DBSeatManager();
 
-        txtPelicula = findViewById(R.id.txtNombrePelicula);
+        txtPelicula = findViewById(R.id.guidFirstRow);
         txtFecha = findViewById(R.id.txtFechaFuncion);
-        txtHora = findViewById(R.id.txtHoraFuncion);
-        txtTipoFuncion = findViewById(R.id.txtTipoFuncion);
-        txtIdioma = findViewById(R.id.txtIdioma);
+        txtHora = findViewById(R.id.guidForthRow);
+        txtTipoFuncion = findViewById(R.id.guidThirdRow);
+        txtIdioma = findViewById(R.id.txtIdiomaFuncion);
         txtSucursal = findViewById(R.id.txtSucursal);
         txtCantAsientos = findViewById(R.id.txtCantAsientos);
         btnConfirmarReserva = findViewById(R.id.btnConfirmarReserva);
