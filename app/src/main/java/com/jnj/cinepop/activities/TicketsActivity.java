@@ -14,7 +14,6 @@ public class TicketsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tickets);
 
-        /*probando*/
         Toolbar mToolbar = findViewById(R.id.toolbar);
         mToolbar.setTitle(getString(R.string.title_activity_tickets));
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
@@ -25,7 +24,9 @@ public class TicketsActivity extends AppCompatActivity {
                 finish();
             }
         });
-        /*hasta aca*/
+
+
+
 
     }
 }
