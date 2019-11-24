@@ -143,6 +143,10 @@ public class MainActivity extends AppCompatActivity
         setOnClickToLogin();
     }
 
+    private void navigateToTickets() {
+        startActivity(new Intent(this, TicketsActivity.class));
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -150,7 +154,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_tickets) {
-
+            navigateToTickets();
         } else if (id == R.id.nav_mapa) {
 
         } else if (id == R.id.nav_logout) {
