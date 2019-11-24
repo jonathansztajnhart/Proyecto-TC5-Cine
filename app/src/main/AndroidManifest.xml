@@ -10,8 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.PaymentActivity"></activity>
-        <activity android:name=".activities.ReservaActivity" />
-        <activity android:name=".activities.MovieActivity" />
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
@@ -28,6 +26,12 @@
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login" />
+        <activity
+            android:name=".activities.ReservaActivity"
+            android:label="@string/title_activity_reserva" />
+        <activity
+            android:name=".activities.MovieActivity"
+            android:label="@string/title_activity_movie" />
     </application>
 
 </manifest>

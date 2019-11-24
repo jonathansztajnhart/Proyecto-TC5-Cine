@@ -40,4 +40,6 @@
 
     <string name="cant_asientos_disponibles">Asientos disponibles:</string>
     <string name="button_confirmar_reserva">Confirmar</string>
+    <string name="title_activity_reserva">Reservar</string>
+    <string name="title_activity_movie">Pelicula</string>
 </resources>
