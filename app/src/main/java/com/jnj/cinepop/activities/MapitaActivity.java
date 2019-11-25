@@ -45,12 +45,36 @@ public class MapitaActivity extends AppCompatActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker and move the camera
-        LatLng myLocation = new LatLng(13.0810, 80.2740);
-        mMap.addMarker(new MarkerOptions().position(myLocation).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation));
+        /*if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }*/
+
+        //mMap.setMyLocationEnabled(true);
+
+        markedSucursales(googleMap);
+
+        LatLng buenosAires = new LatLng(-34.62, -58.45);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(buenosAires));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(myLocation.latitude, myLocation.longitude), 11.0f), 1500, null);
+                new LatLng(buenosAires.latitude, buenosAires.longitude), 11.0f), 1500, null);
 
     }
+
+    private void markedSucursales(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        final LatLng sCaballito = new LatLng(-34.6191719,-58.4402052);
+        final LatLng sBelgrano = new LatLng(-34.5629477,-58.4587212);
+        final LatLng sPalermo = new LatLng(-34.5809201,-58.4267193);
+        final LatLng sPuertoMadero = new LatLng(-34.6128917,-58.3648533);
+
+        mMap.addMarker(new MarkerOptions().position(sCaballito).title("Sucursal de Caballito"));
+        mMap.addMarker(new MarkerOptions().position(sBelgrano).title("Sucursal de Belgrano"));
+        mMap.addMarker(new MarkerOptions().position(sPalermo).title("Sucursal de Palermo"));
+        mMap.addMarker(new MarkerOptions().position(sPuertoMadero).title("Sucursal de Puerto Madero"));
+
+    }
+
+
 }
