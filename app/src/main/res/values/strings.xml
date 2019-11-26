@@ -46,7 +46,7 @@
     <string name="write_coment">Escriba su comentario aquí</string>
     <string name="select_app_mail">Seleccione la app para enviar el mail</string>
     <string name="asunto">Comentario para Cine Pop</string>
-    <string name="mail_contact">cinepop@gmail.com</string>
+    <string name="title_activity_mapita">Mapa</string>
     <string name="title_activity_reserva">Reservar</string>
     <string name="title_activity_movie">Pelicula</string>
     <string name="title_activity_tickets">Mis Tickets</string>
