@@ -10,6 +10,7 @@
 
     <string name="menu_tickets">Mis tickets</string>
     <string name="menu_mapa">Mapa</string>
+    <string name="menu_comentar">Enviar Comentarios</string>
     <string name="menu_logout">Cerrar sesión</string>
 
     <string name="title_activity_login">Iniciar sesión</string>
@@ -40,6 +41,12 @@
 
     <string name="cant_asientos_disponibles">Asientos disponibles:</string>
     <string name="button_confirmar_reserva">Confirmar</string>
+    <string name="title_activity_contacto">Enviar Comentarios</string>
+    <string name="button_send">Enviar</string>
+    <string name="write_coment">Escriba su comentario aquí</string>
+    <string name="select_app_mail">Seleccione la app para enviar el mail</string>
+    <string name="asunto">Comentario para Cine Pop</string>
+    <string name="mail_contact">cinepop@gmail.com</string>
     <string name="title_activity_reserva">Reservar</string>
     <string name="title_activity_movie">Pelicula</string>
     <string name="title_activity_tickets">Mis Tickets</string>

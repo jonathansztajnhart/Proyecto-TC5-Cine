@@ -147,6 +147,10 @@ public class MainActivity extends AppCompatActivity
         startActivity(new Intent(this, TicketsActivity.class));
     }
 
+    private void navigateToContact() {
+        startActivity(new Intent(this, ContactoActivity.class));
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -156,6 +160,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_tickets) {
             navigateToTickets();
         } else if (id == R.id.nav_mapa) {
+
+        } else if (id == R.id.nav_contacto) {
+            navigateToContact();
 
         } else if (id == R.id.nav_logout) {
             logout();

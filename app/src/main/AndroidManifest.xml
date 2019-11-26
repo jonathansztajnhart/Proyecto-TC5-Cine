@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".activities.PaymentActivity" />
+        <activity android:name=".activities.PaymentActivity"></activity>
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
@@ -36,6 +35,10 @@
         <activity
             android:name=".activities.TicketsActivity"
             android:label="@string/title_activity_tickets" />
+        <activity
+            android:name=".activities.ContactoActivity"
+            android:label="@string/title_activity_contacto"
+            />
     </application>
 
 </manifest>

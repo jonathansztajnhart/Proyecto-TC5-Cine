@@ -95,5 +95,3 @@
             android:text="@string/button_register" />
 
     </LinearLayout>
-
-<!--</android.support.constraint.ConstraintLayout>-->
