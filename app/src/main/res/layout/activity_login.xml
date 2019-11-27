@@ -57,7 +57,7 @@
 
             <Button
                 android:id="@+id/btnLogin"
-                android:layout_width="160dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="34dp"
                 android:layout_marginTop="16dp"
@@ -67,7 +67,7 @@
 
             <Button
                 android:id="@+id/btnRegister"
-                android:layout_width="160dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="34dp"
