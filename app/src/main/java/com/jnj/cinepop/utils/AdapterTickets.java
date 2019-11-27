@@ -28,7 +28,12 @@ public class AdapterTickets extends BaseAdapter {
 
 
     public int getCount() {
-        return ticketModels.size();
+        if (ticketModels != null){
+            return ticketModels.size();
+        }
+        else {
+            return 0;
+        }
     }
 
     @Override

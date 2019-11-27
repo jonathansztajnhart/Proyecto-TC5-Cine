@@ -1,6 +1,8 @@
 package com.jnj.cinepop.utils;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.jnj.cinepop.DBAccess.DBFunctionManager;
 import com.jnj.cinepop.DBAccess.DBMovieManager;
@@ -25,6 +28,7 @@ public class MovieFunctionFragment extends Fragment {
     private static final String TAG = "MovieFunctionFragment";
     private DBFunctionManager functionManagerDB;
     private DBMovieManager movieManagerDB;
+    SharedPreferences sharedPref;
 
     @Nullable
     @Override
@@ -33,6 +37,8 @@ public class MovieFunctionFragment extends Fragment {
         movieManagerDB = new DBMovieManager();
         final int id = getArguments().getInt("id");
         View view = inflater.inflate(R.layout.activity_movie_function,container,false);
+
+        sharedPref = this.getActivity().getSharedPreferences("session_login", Context.MODE_PRIVATE);
 
         final Spinner dropdownFecha = view.findViewById(R.id.dropdownFecha);
         final Spinner dropdownHora = view.findViewById(R.id.dropdownHora);
@@ -200,6 +206,10 @@ public class MovieFunctionFragment extends Fragment {
         btnReservaFuncion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String email = sharedPref.getString("email",null);
+
+                if(isLogged(email)) {
                     String pelicula = movieManagerDB.getNameMovie(getContext(), id);
                     String fecha = dropdownFecha.getSelectedItem().toString();
                     String hora = dropdownHora.getSelectedItem().toString();
@@ -222,9 +232,18 @@ public class MovieFunctionFragment extends Fragment {
                     intent.putExtra("sucursal", sucursal);
                     intent.putExtra("idFuncion", idFuncion);
                     startActivity(intent);
+                }
+                else{
+                    Toast.makeText(getActivity().getApplicationContext(), R.string.not_logged,
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         return view;
+    }
+
+    private boolean isLogged(String email){
+        return email != null && !email.equals("");
     }
 }

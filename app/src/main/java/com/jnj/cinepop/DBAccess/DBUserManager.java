@@ -49,4 +49,19 @@ public class DBUserManager {
         res.close();
         return loginModel;
     }
+
+    public int getIdUser(Context context, String email){
+        int userId = 0;
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor res = db.rawQuery( "select " + DatabaseHelper.getColId()
+                + " from " + DatabaseHelper.getDatabaseTableUsers() + " where "
+                + DatabaseHelper.getColEmail() + " = '" + email + "'" , null );
+        if(res.getCount() > 0){
+            res.moveToFirst();
+            userId = Integer.parseInt(res.getString(0));
+        }
+        res.close();
+        return userId;
+    }
 }

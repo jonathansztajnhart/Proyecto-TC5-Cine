@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity
 
         if(isLogged(email)){
             navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_tickets).setVisible(true);
             loginTxt.setText(nombre + " " + apellido);
         } else {
             setOnClickToLogin();
@@ -140,6 +141,7 @@ public class MainActivity extends AppCompatActivity
         editor.commit();
         loginTxt.setText(R.string.nav_header_login);
         navigationView.getMenu().findItem(R.id.nav_logout).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_tickets).setVisible(false);
         setOnClickToLogin();
     }
 

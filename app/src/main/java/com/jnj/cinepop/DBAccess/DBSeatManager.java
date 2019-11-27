@@ -54,7 +54,102 @@ public class DBSeatManager {
         insertSeat(context, 100, 34);
         insertSeat(context, 100, 35);
         insertSeat(context, 100, 36);
-
+        insertSeat(context, 100, 37);
+        insertSeat(context, 100, 38);
+        insertSeat(context, 100, 39);
+        insertSeat(context, 100, 40);
+        insertSeat(context, 100, 41);
+        insertSeat(context, 100, 42);
+        insertSeat(context, 100, 43);
+        insertSeat(context, 100, 44);
+        insertSeat(context, 100, 45);
+        insertSeat(context, 100, 46);
+        insertSeat(context, 100, 47);
+        insertSeat(context, 100, 48);
+        insertSeat(context, 100, 49);
+        insertSeat(context, 100, 50);
+        insertSeat(context, 100, 51);
+        insertSeat(context, 100, 52);
+        insertSeat(context, 100, 53);
+        insertSeat(context, 100, 54);
+        insertSeat(context, 100, 55);
+        insertSeat(context, 100, 56);
+        insertSeat(context, 100, 57);
+        insertSeat(context, 100, 58);
+        insertSeat(context, 100, 59);
+        insertSeat(context, 100, 60);
+        insertSeat(context, 100, 61);
+        insertSeat(context, 100, 62);
+        insertSeat(context, 100, 63);
+        insertSeat(context, 100, 64);
+        insertSeat(context, 100, 65);
+        insertSeat(context, 100, 66);
+        insertSeat(context, 100, 67);
+        insertSeat(context, 100, 68);
+        insertSeat(context, 100, 69);
+        insertSeat(context, 100, 70);
+        insertSeat(context, 100, 71);
+        insertSeat(context, 100, 72);
+        insertSeat(context, 100, 73);
+        insertSeat(context, 100, 74);
+        insertSeat(context, 100, 75);
+        insertSeat(context, 100, 76);
+        insertSeat(context, 100, 77);
+        insertSeat(context, 100, 78);
+        insertSeat(context, 100, 79);
+        insertSeat(context, 100, 80);
+        insertSeat(context, 100, 81);
+        insertSeat(context, 100, 82);
+        insertSeat(context, 100, 83);
+        insertSeat(context, 100, 84);
+        insertSeat(context, 100, 85);
+        insertSeat(context, 100, 86);
+        insertSeat(context, 100, 87);
+        insertSeat(context, 100, 88);
+        insertSeat(context, 100, 89);
+        insertSeat(context, 100, 90);
+        insertSeat(context, 100, 91);
+        insertSeat(context, 100, 92);
+        insertSeat(context, 100, 93);
+        insertSeat(context, 100, 94);
+        insertSeat(context, 100, 95);
+        insertSeat(context, 100, 96);
+        insertSeat(context, 100, 97);
+        insertSeat(context, 100, 98);
+        insertSeat(context, 100, 99);
+        insertSeat(context, 100, 100);
+        insertSeat(context, 100, 101);
+        insertSeat(context, 100, 102);
+        insertSeat(context, 100, 103);
+        insertSeat(context, 100, 104);
+        insertSeat(context, 100, 105);
+        insertSeat(context, 100, 106);
+        insertSeat(context, 100, 107);
+        insertSeat(context, 100, 108);
+        insertSeat(context, 100, 109);
+        insertSeat(context, 100, 110);
+        insertSeat(context, 100, 111);
+        insertSeat(context, 100, 112);
+        insertSeat(context, 100, 113);
+        insertSeat(context, 100, 114);
+        insertSeat(context, 100, 115);
+        insertSeat(context, 100, 116);
+        insertSeat(context, 100, 117);
+        insertSeat(context, 100, 118);
+        insertSeat(context, 100, 119);
+        insertSeat(context, 100, 120);
+        insertSeat(context, 100, 121);
+        insertSeat(context, 100, 122);
+        insertSeat(context, 100, 123);
+        insertSeat(context, 100, 124);
+        insertSeat(context, 100, 125);
+        insertSeat(context, 100, 126);
+        insertSeat(context, 100, 127);
+        insertSeat(context, 100, 128);
+        insertSeat(context, 100, 129);
+        insertSeat(context, 100, 130);
+        insertSeat(context, 100, 131);
+        insertSeat(context, 100, 132);
     }
 
     public int getCantAsientos(Context context, int idFuncion) {
@@ -75,18 +170,10 @@ public class DBSeatManager {
     public void disminuirCantAsientos(Context context, int idFuncion, int cantAsientosSeleccionados) {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int asientosRestantes = getCantAsientos(context, idFuncion) - cantAsientosSeleccionados;
         db.execSQL("update " + DatabaseHelper.getDatabaseTableSeats()
-                + " set "+ DatabaseHelper.getColCantAsientos() + " = ''"
-                + (getCantAsientos(context,idFuncion) - cantAsientosSeleccionados) + "'"
-                + " where " + DatabaseHelper.getColIdFuncion() + " = '" + idFuncion + "'", null );
-    }
-
-    public void aumentarCantAsientos(Context context, int idFuncion, int cantAsientosSeleccionados) {
-        DatabaseHelper dbHelper = new DatabaseHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        db.execSQL("update " + DatabaseHelper.getDatabaseTableSeats()
-                + " set "+ DatabaseHelper.getColCantAsientos() + " = ''"
-                + (getCantAsientos(context,idFuncion) + cantAsientosSeleccionados) + "'"
-                + " where " + DatabaseHelper.getColIdFuncion() + " = '" + idFuncion + "'", null );
+                + " set "+ DatabaseHelper.getColCantAsientos() + " = '"
+                +  String.valueOf(asientosRestantes) + "'"
+                + " where " + DatabaseHelper.getColIdFuncion() + " = '" + idFuncion + "'");
     }
 }

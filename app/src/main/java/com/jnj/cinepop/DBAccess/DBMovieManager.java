@@ -24,10 +24,17 @@ public class DBMovieManager {
     }
 
     public void loadMovies(Context context){
-        insertMovie(context, "Avengers Endgame", "Sinopsis pelicula", "ATP", "avengers_endgame");
+        insertMovie(context, "Avengers Endgame", "Sinopsis pelicula", "+13", "avengers_endgame");
         insertMovie(context, "Angry Birds 2", "Sinopsis pelicula", "ATP", "angry_birds_2");
-        insertMovie(context, "Capitana Marvel", "Sinopsis pelicula", "ATP", "capitana_marvel");
+        insertMovie(context, "Capitana Marvel", "Sinopsis pelicula", "+13", "capitana_marvel");
         insertMovie(context, "Pokemon: Detective Pikachu", "Sinopsis pelicula", "ATP", "pokemon_detective_pikachu");
+        insertMovie(context, "Dora y la ciudad perdida", "Sinopsis pelicula", "ATP", "dora_y_la_ciudad_perdida");
+        insertMovie(context, "Dumbo", "Sinopsis pelicula", "ATP", "dumbo");
+        insertMovie(context, "El hijo", "Sinopsis pelicula", "+16", "el_hijo");
+        insertMovie(context, "Entre la razón y la locura", "Sinopsis pelicula", "+13", "entre_la_razon_y_la_locura");
+        insertMovie(context, "Guason", "Sinopsis pelicula", "+18", "guason");
+        insertMovie(context, "La llorona", "Sinopsis pelicula", "+16", "la_llorona");
+        insertMovie(context, "Shazam", "Sinopsis pelicula", "+13", "shazam");
     }
 
     public MovieModel getMovie(Context context, int id) {

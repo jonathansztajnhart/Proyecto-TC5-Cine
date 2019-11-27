@@ -1,5 +1,6 @@
 package com.jnj.cinepop.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.jnj.cinepop.DBAccess.DBSeatManager;
+import com.jnj.cinepop.DBAccess.DBTicketsManager;
+import com.jnj.cinepop.DBAccess.DBUserManager;
 import com.jnj.cinepop.R;
 
 import java.util.ArrayList;
@@ -31,6 +34,8 @@ public class ReservaActivity extends AppCompatActivity {
             txtIdioma, txtSucursal, txtCantAsientos;
     private Button btnConfirmarReserva;
     private DBSeatManager seatManagerDB;
+    private DBUserManager userManagerDB;
+    private DBTicketsManager ticketsManagerDB;
     private Spinner dropdownCantDias;
 
     @Override
@@ -50,6 +55,8 @@ public class ReservaActivity extends AppCompatActivity {
         });
 
         seatManagerDB = new DBSeatManager();
+        userManagerDB = new DBUserManager();
+        ticketsManagerDB = new DBTicketsManager();
 
         txtPelicula = findViewById(R.id.guidFirstRow);
         txtFecha = findViewById(R.id.txtFechaFuncion);
@@ -96,10 +103,13 @@ public class ReservaActivity extends AppCompatActivity {
         btnConfirmarReserva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
-                intent.putExtra("idFuncion", getIntent().getExtras().getInt("idFuncion"));
-                intent.putExtra("cantAsientos", Integer.parseInt(dropdownCantDias.getSelectedItem().toString()));
-                intent.putExtra("idTipoFuncion", getIntent().getExtras().getInt("idTipoFuncion"));
+                String email = getSharedPreferences("session_login", Context.MODE_PRIVATE).getString("email",null);
+                int idFuncion = getIntent().getExtras().getInt("idFuncion");
+                int idUsuario = userManagerDB.getIdUser(getApplicationContext(), email);
+                int cantAsientos = Integer.parseInt(dropdownCantDias.getSelectedItem().toString());
+                ticketsManagerDB.insertTicket(getApplicationContext(), idUsuario, idFuncion, cantAsientos);
+                seatManagerDB.disminuirCantAsientos(getApplicationContext(), idFuncion, cantAsientos);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -52,4 +52,5 @@
     <string name="title_activity_tickets">Mis Tickets</string>
 
     <string name="cant_asientos">Asientos: </string>
+    <string name="not_logged">Debe haber iniciado sesión para realizar una reserva</string>
 </resources>
