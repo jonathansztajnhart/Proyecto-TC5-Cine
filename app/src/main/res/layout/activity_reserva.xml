@@ -25,6 +25,7 @@
 
             <TextView
                 android:id="@+id/guidFirstRow"
+                android:textSize="40sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:layout_editor_absoluteX="176dp"
@@ -35,17 +36,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txtFechaFuncion"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/guidForthRow"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -55,59 +58,69 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/guidThirdRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtIdiomaFuncion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtSucursal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txtCantAsientos"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
+
 
     <LinearLayout
-        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/dropdownCantDias"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/btnConfirmarReserva"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/button_confirmar_reserva" />
     </LinearLayout>
+
+    <Spinner
+        android:id="@+id/dropdownCantDias"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="0" />
+
+    <Button
+        android:id="@+id/btnConfirmarReserva"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_weight="0"
+        android:text="@string/button_confirmar_reserva" />
+
 
 </LinearLayout>
